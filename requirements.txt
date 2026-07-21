@@ -1,0 +1,52 @@
+# ============================================================
+# 企业 RAG 知识库 — Python 依赖
+# 安装: pip install -r requirements.txt
+# ============================================================
+
+# ── Web 框架 ──────────────────────────────
+fastapi>=0.115.0
+uvicorn[standard]>=0.34.0
+python-multipart>=0.0.20          # File Upload 支持
+aiofiles>=24.0.0                  # StaticFiles 支持
+
+# ── 配置管理 ──────────────────────────────
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+pyyaml>=6.0
+
+# ── LangChain 生态 ─────────────────────────
+langchain-community>=0.3.0
+langchain-core>=0.3.0
+langchain-text-splitters>=0.3.0
+
+# ── 阿里云 DashScope (LLM + Embedding + Reranker) ──
+dashscope>=1.20.0
+
+# ── Milvus 向量数据库 ──────────────────────
+pymilvus>=2.4.0,<3.0
+
+# ── PDF 处理（三级降级链路）─────────────────
+pypdf>=5.0.0                      # 1. 快速文本提取（电子文档）
+pdfplumber>=0.11.0                # 2. 保布局 + 表格提取
+pypdfium2>=4.30.0                 # 3. 渲染为图像供 OCR
+
+# ── OCR（扫描件/图片型 PDF）────────────────
+paddleocr>=2.9.0
+paddlepaddle>=3.0.0
+
+# ── 其他文档格式 ──────────────────────────
+docx2txt>=0.8                     # Word 文档
+pandas>=2.0.0                     # Excel 读取
+openpyxl>=3.1.0                   # pandas Excel 引擎
+
+# ── 图像处理（OCR 预处理）──────────────────
+Pillow>=10.0.0
+numpy>=1.26.0
+
+# ── 测试 ─────────────────────────────────
+pytest>=8.0.0
+httpx>=0.28.0
+
+# ── 生产部署（可选）────────────────────────
+# gunicorn>=23.0.0                 # Linux 生产服务器
+# pip install -r requirements.txt 后手动安装

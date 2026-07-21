@@ -1,0 +1,75 @@
+# ============================================
+# 企业 RAG 知识库 — YAML 配置
+# ============================================
+
+app:
+  name: "Enterprise RAG API"
+  version: "1.0.0"
+  debug: true
+
+# --- Milvus 向量库 ---
+milvus:
+  host: ${MILVUS_HOST:localhost}
+  port: ${MILVUS_PORT:19530}
+  collection_name: "knowledge_base"
+  # HNSW: 高召回精度，适合千万级数据
+  index:
+    metric_type: "COSINE"
+    index_type: "HNSW"
+    params:
+      M: 16           # 每个节点的最大连接数（推荐 4~64）
+      efConstruction: 200  # 构建时搜索宽度
+    search_params:
+      ef: 64          # 搜索时搜索宽度
+
+# --- Embedding 模型 ---
+embedding:
+  # 主模型：DashScope text-embedding-v4
+  provider: "dashscope"         # dashscope | local
+  model_name: "text-embedding-v4"
+  dimension: 1024
+  # 本地模型（预留）
+  local:
+    model_name: "bge-large-zh-v1.5"
+    device: "cpu"               # cpu | cuda
+
+# --- LLM ---
+llm:
+  provider: "dashscope"         # dashscope | local
+  model_name: "qwen-turbo"       # qwen-turbo | qwen-plus | qwen-max
+  temperature: 0.1
+  max_tokens: 8192
+  # 本地模型（预留）
+  local:
+    model_name: "qwen2.5-7b-instruct"
+    device: "cpu"
+
+# --- 文档分块策略 ---
+chunking:
+  child_chunk_size: 256      # 小 chunk（句子/段落级）
+  child_chunk_overlap: 32    # 小 chunk 重叠
+  parent_chunk_size: 1024    # 父 chunk（章节级，检索时用作上下文扩展）
+
+# --- 检索 ---
+retrieval:
+  top_k: 10                  # 检索返回数量
+  rerank_enabled: true       # 是否启用 Reranker 精排
+  cache_enabled: true        # 是否启用检索缓存
+
+# --- Reranker ---
+reranker:
+  provider: "dashscope"      # dashscope | local
+  model_name: "gte-rerank"   # DashScope 官方 rerank 模型
+  top_n: 5                   # 精排后返回数量
+
+# --- 缓存 ---
+cache:
+  embedding_ttl: 600         # embedding 缓存 TTL (秒)
+  search_ttl: 120            # 检索结果缓存 TTL (秒)
+
+# --- 后置校验 ---
+guard:
+  max_answer_length: 8000
+  forbidden_words:
+    - "我保证"
+    - "绝对没问题"

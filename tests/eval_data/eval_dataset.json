@@ -1,0 +1,110 @@
+[
+  {
+    "query": "RAG的基本思路是什么？",
+    "ground_truth_doc_ids": [
+      "f57208cf-2179-4243-8657-71419484a76b"
+    ],
+    "reference_answer": "RAG的基本思路是将问题转换成向量，去文档库中检索相关内容，然后让大模型基于这些内容生成答案。",
+    "relevance": 2,
+    "doc_type": "faq"
+  },
+  {
+    "query": "为什么不同团队实现的RAG效果差异很大？",
+    "ground_truth_doc_ids": [
+      "f57208cf-2179-4243-8657-71419484a76b"
+    ],
+    "reference_answer": "因为虽然都是RAG，但实际落地中，不同团队在检索、向量化和模型生成等方面的处理方式不同，导致效果差异极大。",
+    "relevance": 2,
+    "doc_type": "faq"
+  },
+  {
+    "query": "RAG在实际应用中可能遇到哪些问题？",
+    "ground_truth_doc_ids": [
+      "f57208cf-2179-4243-8657-71419484a76b"
+    ],
+    "reference_answer": "RAG在实际应用中可能遇到的问题包括返回不相关的内容，或者答案与文档不匹配。",
+    "relevance": 2,
+    "doc_type": "faq"
+  },
+  {
+    "query": "文本分割在RAG技术中起到什么作用？",
+    "ground_truth_doc_ids": [
+      "839e224a-603a-4e5b-86be-f9897002c514"
+    ],
+    "reference_answer": "文本分割是RAG流程中的核心环节，直接影响整个系统的性能与效果。",
+    "relevance": 2,
+    "doc_type": "faq"
+  },
+  {
+    "query": "为什么需要进行文本分割？",
+    "ground_truth_doc_ids": [
+      "839e224a-603a-4e5b-86be-f9897002c514"
+    ],
+    "reference_answer": "如果不进行合理的文本分割，AI在处理文本过程中会面临诸多问题。",
+    "relevance": 2,
+    "doc_type": "faq"
+  },
+  {
+    "query": "RAG技术中的文本分割主要解决哪些AI应用的痛点？",
+    "ground_truth_doc_ids": [
+      "839e224a-603a-4e5b-86be-f9897002c514"
+    ],
+    "reference_answer": "文本分割可以解决AI应用中因文本处理不当而引发的问题。",
+    "relevance": 2,
+    "doc_type": "faq"
+  },
+  {
+    "query": "微调技术适用于哪些场景？",
+    "ground_truth_doc_ids": [
+      "16310d0f-d4c0-43de-a082-a50cc52a303d"
+    ],
+    "reference_answer": "微调技术适用于深耕静态知识领域的场景。",
+    "relevance": 2,
+    "doc_type": "faq"
+  },
+  {
+    "query": "RAG 技术与微调技术的主要区别是什么？",
+    "ground_truth_doc_ids": [
+      "16310d0f-d4c0-43de-a082-a50cc52a303d"
+    ],
+    "reference_answer": "RAG 技术与微调技术的区别在于适用场景的不同，微调适用于静态知识领域，而 RAG 更适合需要动态知识更新的场景。",
+    "relevance": 2,
+    "doc_type": "faq"
+  },
+  {
+    "query": "在大模型面试中，为什么‘何时用微调技术，何时用 RAG 技术’是一个高频考点？",
+    "ground_truth_doc_ids": [
+      "16310d0f-d4c0-43de-a082-a50cc52a303d"
+    ],
+    "reference_answer": "因为这个问题不仅考察对两种技术的理解，还看能否结合场景权衡运用。",
+    "relevance": 2,
+    "doc_type": "faq"
+  },
+  {
+    "query": "RAG系统效果不达预期的原因有哪些？",
+    "ground_truth_doc_ids": [
+      "679f4ce1-3490-4441-978d-637fd54d5bae"
+    ],
+    "reference_answer": "RAG系统效果不达预期可能与数据准备、数据检索和LLM生成三个核心环节有关。",
+    "relevance": 2,
+    "doc_type": "sop"
+  },
+  {
+    "query": "RAG系统优化指南的作者是谁？",
+    "ground_truth_doc_ids": [
+      "679f4ce1-3490-4441-978d-637fd54d5bae"
+    ],
+    "reference_answer": "RAG系统优化指南的作者是‘大模型真好玩’。",
+    "relevance": 2,
+    "doc_type": "sop"
+  },
+  {
+    "query": "RAG系统优化指南的阅读时间是多少？",
+    "ground_truth_doc_ids": [
+      "679f4ce1-3490-4441-978d-637fd54d5bae"
+    ],
+    "reference_answer": "RAG系统优化指南的阅读时间是14分钟。",
+    "relevance": 2,
+    "doc_type": "sop"
+  }
+]

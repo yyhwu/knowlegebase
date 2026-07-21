@@ -1,0 +1,55 @@
+# ── Python ──────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# ── 虚拟环境 ────────────────────────────
+venv/
+.venv/
+env/
+.env
+*.env.local
+
+# ── IDE / 编辑器 ────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Docker 数据卷 ───────────────────────
+milvus-data/
+etcd-data/
+minio-data/
+
+# ── 项目运行时数据 ──────────────────────
+data/
+logs/
+*.log
+
+# ── 敏感配置 ────────────────────────────
+.env
+config/settings.local.yml
+
+# ── Jupyter ─────────────────────────────
+.ipynb_checkpoints/
+
+# ── 测试覆盖率 ───────────────────────────
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+.pytest_cache/
+
+# ── 临时文件 ────────────────────────────
+*.tmp
+*.temp
+tmp/
+temp/

@@ -1,0 +1,52 @@
+services:
+  etcd:
+    image: quay.io/coreos/etcd:v3.5.5
+    container_name: milvus-etcd
+    volumes:
+      - etcd-data:/etcd-data
+    expose:
+      - "2379"
+      - "2380"
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=4294967296
+      - ETCD_SNAPSHOT_COUNT=50000
+    command: etcd -name milvus-etcd -data-dir=/etcd-data --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://0.0.0.0:2379 --listen-peer-urls http://0.0.0.0:2380
+
+  minio:
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+    container_name: milvus-minio
+    volumes:
+      - minio-data:/minio_data
+    environment:
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+    expose:
+      - "9000"
+      - "9091"
+    command: minio server /minio_data --console-address ":9091"
+
+  standalone:
+    image: milvusdb/milvus:v2.4.23
+    container_name: milvus-standalone
+    volumes:
+      - milvus-data:/var/lib/milvus
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    environment:
+      - ETCD_ENDPOINTS=etcd:2379
+      - MINIO_ADDRESS=minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+    depends_on:
+      - etcd
+      - minio
+    # 强制指定Milvus启动命令，解决tini无参数闪退
+    command: ["milvus", "run", "standalone"]
+
+volumes:
+  etcd-data:
+  minio-data:
+  milvus-data:
